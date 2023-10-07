@@ -1,3 +1,4 @@
+#import modules
 import json
 import re
 import random_responses
@@ -32,18 +33,14 @@ def get_response(input_string):
 
         # Amount of required words should match the required score
         if required_score == len(required_words):
-            # print(required_score == len(required_words))
-            # Check each word the user has typed
-            for word in split_message:
+                       for word in split_message:
                 # If the word is in the response, add to the score
                 if word in response["user_input"]:
                     response_score += 1
 
         # Add score to list
         score_list.append(response_score)
-        # Debugging: Find the best phrase
-        # print(response_score, response["user_input"])
-
+       
     # Find the best response and return it if they're not all 0
     best_response = max(score_list)
     response_index = score_list.index(best_response)
